@@ -54,52 +54,66 @@
   </div>
 
   <script type="text/javascript">
+    // Constant
+    var morseCodeMap = [
+      {morseCode: ".-", letter: "A"},
+      {morseCode: "-...", letter: "B"},
+      {morseCode: "-.-.", letter: "C"},
+      {morseCode: "-..", letter: "D"},
+      {morseCode: ".", letter: "E"},
+      {morseCode: "..-.", letter: "F"},
+      {morseCode: "--.", letter: "G"},
+      {morseCode: "....", letter: "H"},
+      {morseCode: "..", letter: "I"},
+      {morseCode: ".---", letter: "J"},
+      {morseCode: "-.-", letter: "K"},
+      {morseCode: ".-..", letter: "L"},
+      {morseCode: "--", letter: "M"},
+      {morseCode: "-.", letter: "N"},
+      {morseCode: "---", letter: "O"},
+      {morseCode: ".--.", letter: "P"},
+      {morseCode: "--.-", letter: "Q"},
+      {morseCode: ".-.", letter: "R"},
+      {morseCode: "...", letter: "S"},
+      {morseCode: "-", letter: "T"},
+      {morseCode: "..-", letter: "U"},
+      {morseCode: "...-", letter: "V"},
+      {morseCode: ".--", letter: "W"},
+      {morseCode: "-..-", letter: "X"},
+      {morseCode: "-.--", letter: "Y"},
+      {morseCode: "--..", letter: "Z"}
+    ];
 
-    $(document).ready(function() {
-      // Constant
-      var morseCodeMap = {
-        ".-": "A",
-        "-...": "B",
-        "-.-.": "C",
-        "-..": "D",
-        ".": "E",
-        "..-.": "F",
-        "--.": "G",
-        "....": "H",
-        "..": "I",
-        ".---": "J",
-        "-.-": "K",
-        ".-..": "L",
-        "--": "M",
-        "-.": "N",
-        "---": "O",
-        ".--.": "P",
-        "--.-": "Q",
-        ".-.": "R",
-        "...": "S",
-        "-": "T",
-        "..-": "U",
-        "...-": "V",
-        ".--": "W",
-        "-..-": "X",
-        "-.--": "Y",
-        "--..": "Z"
-      };
+    // Variables
+    var translatedMessage;
+    var currentMorseCode;
 
+    function init() {
+      translatedMessage = "";
+      currentMorseCode = "";
+    }
 
-      // Variables
-      var translatedMessage;
-      var currentMorseCode;
+    function getPossibleLetters(morseCode) {
+      var inputLength = morseCode.length;
+      var outArray = [];
 
-      function init() {
-        translatedMessage = "";
-        currentMorseCode = "";
+      for (var i = 0; i < morseCodeMap.length; i++) {
+        if (morseCodeMap[i].morseCode.substr(0, inputLength) == morseCode)
+          outArray.push(morseCodeMap[i]);
       }
 
+      return outArray;
+    }
+
+    $(document).ready(function() {
       // Check if any button is clicked...
       $("#dot").on("click", function() {
-          console.log("test")
+          currentMorseCode += ".";
+          var possibilities = getPossibleLetters(currentMorseCode);
+          console.log(currentMorseCode, possibilities);
       });
+
+
       $("#dash").on("click", function() {
           console.log("test")
       });
