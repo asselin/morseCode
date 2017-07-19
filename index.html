@@ -56,12 +56,58 @@
   <script type="text/javascript">
 
     $(document).ready(function() {
+      // Constant
+      var morseCodeMap = {
+        ".-": "A",
+        "-...": "B",
+        "-.-.": "C",
+        "-..": "D",
+        ".": "E",
+        "..-.": "F",
+        "--.": "G",
+        "....": "H",
+        "..": "I",
+        ".---": "J",
+        "-.-": "K",
+        ".-..": "L",
+        "--": "M",
+        "-.": "N",
+        "---": "O",
+        ".--.": "P",
+        "--.-": "Q",
+        ".-.": "R",
+        "...": "S",
+        "-": "T",
+        "..-": "U",
+        "...-": "V",
+        ".--": "W",
+        "-..-": "X",
+        "-.--": "Y",
+        "--..": "Z"
+      };
+
 
       // Variables
+      var translatedMessage;
+      var currentMorseCode;
+
+      function init() {
+        translatedMessage = "";
+        currentMorseCode = "";
+      }
 
       // Check if any button is clicked...
-      $(document).on("click", "button", function() {
+      $("#dot").on("click", function() {
+          console.log("test")
       });
+      $("#dash").on("click", function() {
+          console.log("test")
+      });
+      $("#space").on("click", function() {
+          console.log("test")
+      });
+
+      init();
     });
 
   </script>
